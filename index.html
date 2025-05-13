@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Horizon Hotel | Luxury Accommodations</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Internal CSS -->
+    <style>
+        /* Custom Styles */
+        :root {
+            --primary-color: #3a5a78;
+            --secondary-color: #d4af37;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            margin: 0 10px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: var(--dark-color);
+            font-weight: 600;
+            padding: 10px 25px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c9a227;
+            border-color: #c9a227;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .room-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .room-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .room-card img {
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .room-card .card-body {
+            padding: 25px;
+        }
+        
+        .room-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .room-price {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+        
+        .amenities-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-title {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">GRAND HORIZON</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rooms">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#amenities">Amenities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Experience Luxury Redefined</h1>
+            <p class="hero-subtitle">Discover unparalleled comfort at Grand Horizon Hotel</p>
+            <a href="#rooms" class="btn btn-primary btn-lg">Explore Rooms</a>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Our Rooms & Suites</h2>
+            <div class="row">
+                <!-- Room 1 -->
+                <div class="col-md-4">
+                    <div class="room-card">
+                        <img src="https://images.unsplash.com/photo-1591088398332-8a7791972843" class="card-img-top" alt="Deluxe Room">
+                        <div class="card-body">
+                            <h3 class="room-title">Deluxe Room</h3>
+                            <p class="card-text">Spacious rooms with modern amenities, perfect for business travelers and couples.</p>
+                            <p class="room-price">From $199/night</p>
+                            <a href="#" class="btn btn-outline-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 2 -->
+                <div class="col-md-4">
+                    <div class="room-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ_8nFqLX-o69pZWdACxWb9Po18JVu-IclT7Z4ReYCzA&s&ec=72940542" class="card-img-top" alt="Executive Suite">
+                        <div class="card-body">
+                            <h3 class="room-title">Executive Suite</h3>
+                            <p class="card-text">Luxurious suite with separate living area and premium services for discerning guests.</p>
+                            <p class="room-price">From $349/night</p>
+                            <a href="#" class="btn btn-outline-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Room 3 -->
+                <div class="col-md-4">
+                    <div class="room-card">
+                        <img src="https://www.hoteldel.com/wp-content/uploads/2021/01/hotel-del-coronado-views-suite-K1TOS1-K1TOJ1-1600x900-1.jpg" class="card-img-top" alt="Presidential Suite">
+                        <div class="card-body">
+                            <h3 class="room-title">Presidential Suite</h3>
+                            <p class="card-text">The ultimate in luxury with panoramic views, butler service, and exclusive amenities.</p>
+                            <p class="room-price">From $599/night</p>
+                            <a href="#" class="btn btn-outline-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Hotel Amenities</h2>
+            <div class="row text-center">
+                <!-- Amenity 1 -->
+                <div class="col-md-3 mb-4">
+                    <div class="amenities-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h4>Fine Dining</h4>
+                    <p>Multiple restaurants offering international cuisines</p>
+                </div>
+                
+                <!-- Amenity 2 -->
+                <div class="col-md-3 mb-4">
+                    <div class="amenities-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h4>Spa & Wellness</h4>
+                    <p>Full-service spa with expert therapists</p>
+                </div>
+                
+                <!-- Amenity 3 -->
+                <div class="col-md-3 mb-4">
+                    <div class="amenities-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h4>Infinity Pool</h4>
+                    <p>Stunning rooftop pool with city views</p>
+                </div>
+                
+                <!-- Amenity 4 -->
+                <div class="col-md-3 mb-4">
+                    <div class="amenities-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h4>Fitness Center</h4>
+                    <p>24/7 gym with state-of-the-art equipment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title">Guest Reviews</h2>
+            <div class="row">
+                <!-- Testimonial 1 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The service was impeccable and the room was beyond expectations. Will definitely return on my next trip!"</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson" class="rounded-circle me-3" width="50">
+                            <div>
+                                <h5 class="testimonial-author mb-0">Sarah Johnson</h5>
+                                <small>Business Traveler</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The spa treatments were heavenly and the staff made our anniversary truly special. Highly recommend!"</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael Chen" class="rounded-circle me-3" width="50">
+                            <div>
+                                <h5 class="testimonial-author mb-0">Michael Chen</h5>
+                                <small>Honeymooner</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Perfect location with stunning views. The executive suite was spacious and had everything we needed."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez" class="rounded-circle me-3" width="50">
+                            <div>
+                                <h5 class="testimonial-author mb-0">Emily Rodriguez</h5>
+                                <small>Family Vacation</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Contact Us</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <h4 class="mb-4">Get in Touch</h4>
+                        <p><i class="fas fa-map-marker-alt contact-icon"></i> 123 Ocean Boulevard, Miami, FL 33139</p>
+                        <p><i class="fas fa-phone contact-icon"></i> +1 (305) 555-0123</p>
+                        <p><i class="fas fa-envelope contact-icon"></i> reservations@grandhorizon.com</p>
+                    </div>
+                    <div class="social-media mb-4">
+                        <h4 class="mb-3">Follow Us</h4>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-title">Grand Horizon</h5>
+                    <p>Luxury redefined. Experience world-class hospitality with breathtaking views and impeccable service.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#rooms">Rooms</a></li>
+                        <li><a href="#amenities">Amenities</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Spa & Wellness</a></li>
+                        <li><a href="#">Conference Rooms</a></li>
+                        <li><a href="#">Wedding Planning</a></li>
+                        <li><a href="#">Airport Transfer</a></li>
+                        <li><a href="#">Tour Packages</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="footer-title">Newsletter</h5>
+                    <p>Subscribe for special offers and updates</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your Email">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center copyright">
+                <p>&copy; 2023 Grand Horizon Hotel. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Font Awesome -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
